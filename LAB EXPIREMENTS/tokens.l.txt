@@ -1,0 +1,21 @@
+%{
+%}
+%%
+"int"|"float"|"char"|"double"|"void"|"if"|"else"|"while"|"for"|"do"|"switch"|"case"|"break"|"continue"|"return"|"struct"|"const"|"static" {printf("\nKeyword");}
+[a-zA-Z_][a-zA-Z0-9_]* {printf("\nIdentifier");}
+[0-9]+\.[0-9]+ {printf("\nFloat constant");}
+[0-9]+ {printf("\nInteger constant");}
+\'[^']\' {printf("\nCharacter constant");}
+\"[^\"]*\" {printf("\nString constant");}
+"=="|"!="|"<="|">="|"++"|"--"|"&&"|"||"|"+="|"-="|"*="|"/="|"%=" {printf("\nOperator");}
+[+\-*/%=<>!] {printf("\nOperator");}
+[(){}\[\],;:.] {printf("\nPunctuation");}
+[ \t\n]+ ;
+. {printf("\nInvalid token");}
+%%
+int yywrap(void){}
+int main()
+{
+ printf("Enter tokens:");
+ yylex();
+}

@@ -1,0 +1,20 @@
+%{
+#include <stdio.h>
+FILE *out;
+%}
+%%
+"<"[^>]+">" {fprintf(out,"%s\n",yytext);}
+%%
+int main()
+{
+    yyin=fopen("input.html","r");
+    out=fopen("output.txt","w");
+    yylex();
+    fclose(yyin);
+    fclose(out);
+    return 0;
+}
+int yywrap()
+{
+    return 1;
+}

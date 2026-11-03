@@ -1,0 +1,15 @@
+%{
+int p=0,n=0;
+%}
+%%
+-[0-9]+(\.[0-9]+)? {printf("\nNegative number"); n++;}
+[0-9]+(\.[0-9]+)? {printf("\nPositive number"); p++;}
+\n {printf("\nPositive numbers: %d\nNegative numbers: %d\n",p,n); p=0; n=0; printf("\nEnter number:");}
+. ;
+%%
+int yywrap(void){return 1;}
+int main()
+{
+ printf("Enter number:");
+ yylex();
+}

@@ -1,0 +1,15 @@
+%{
+int v=0,c=0;
+%}
+%%
+[aeiouAEIOU] {v++;}
+[a-zA-Z] {c++;}
+\n {printf("\nVowels: %d\nConsonants: %d\n",v,c); v=0; c=0; printf("\nEnter word:");}
+. ;
+%%
+int yywrap(void){return 1;}
+int main()
+{
+ printf("Enter word:");
+ yylex();
+}

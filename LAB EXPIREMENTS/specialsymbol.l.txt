@@ -1,0 +1,14 @@
+%{
+int s=0;
+%}
+%%
+[!@#$%^&*(),.?":{}|<>] {s++;}
+\n {printf("\nNumber of special symbols: %d\n",s);}
+. ;
+%%
+int yywrap(void){return 1;}
+int main()
+{
+ printf("Enter input:");
+ yylex();
+}

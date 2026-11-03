@@ -1,0 +1,19 @@
+%{
+#include<stdio.h>
+int line=1;
+FILE *out;
+%}
+%%
+\n {fprintf(out,"\nLine %d: ",++line);}
+.  {fprintf(out,"%s",yytext);}
+%%
+int yywrap(){return 1;}
+int main(){
+out=fopen("output.txt","w");
+yyin=fopen("input.c","r");
+fprintf(out,"Line 1: ");
+yylex();
+fclose(out);
+fclose(yyin);
+return 0;
+}

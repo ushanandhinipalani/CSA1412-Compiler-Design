@@ -1,0 +1,16 @@
+%{
+int m=0,h=0;
+%}
+%%
+^[ \t]*#[ \t]*define {m++;}
+^[ \t]*#[ \t]*include {h++;}
+\n ;
+. ;
+%%
+int yywrap(void){return 1;}
+int main()
+{
+ printf("Enter C program (Ctrl+Z then Enter to stop):\n");
+ yylex();
+ printf("\nNumber of macros: %d\nNumber of header files: %d\n",m,h);
+}

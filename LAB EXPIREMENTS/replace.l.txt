@@ -1,0 +1,31 @@
+%{
+#include <stdio.h>
+#include <string.h>
+char old[20], new[20];
+%}
+%%
+[a-zA-Z]+ {
+    if (strcmp(yytext, old) == 0)
+        printf("%s", new);
+    else
+        printf("%s", yytext);
+}
+.|\n    { ECHO; }
+%%
+int main()
+{
+    printf("Enter old word: ");
+    scanf("%s", old);
+
+    printf("Enter new word: ");
+    scanf("%s", new);
+
+    printf("Enter passage:\n");
+    yylex();
+
+    return 0;
+}
+int yywrap()
+{
+    return 1;
+}

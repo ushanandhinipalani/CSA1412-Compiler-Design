@@ -1,0 +1,12 @@
+%{
+%}
+%%
+[a-zA-Z_][a-zA-Z0-9_]* {printf("\nThis is a valid identifier\n");}
+.+ {printf("\ninvalid identifier");}
+%%
+int yywrap(void){}
+int main()
+{
+ printf("Enter:");
+ yylex();
+}

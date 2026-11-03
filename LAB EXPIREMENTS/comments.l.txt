@@ -1,0 +1,13 @@
+%{
+%}
+%%
+"//".*  ;
+"/*"([^*]|\*+[^*/])*\*+"/"  ;
+.|\n  {printf("%s",yytext);}
+%%
+int yywrap(void) {}
+int main()
+{
+    printf("\nEnter the Code : ");
+    yylex();
+}

@@ -1,0 +1,20 @@
+%{
+#include <stdio.h>
+#include <string.h>
+char word[20];
+int count=0;
+%}
+%%
+[a-zA-Z]+ {if(strcmp(yytext,word)==0) count++;}
+.|\n ;
+%%
+int yywrap(){return 1;}
+int main()
+{
+ printf("Enter word to count: ");
+ scanf("%s",word);
+ printf("Enter passage:\n");
+ yylex();
+ printf("\nFrequency of %s: %d\n",word,count);
+ return 0;
+}
