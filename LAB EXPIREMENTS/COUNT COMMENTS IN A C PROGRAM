@@ -1,0 +1,46 @@
+#include <stdio.h>
+
+int main()
+{
+    FILE *fp;
+    char c, d;
+    int count = 0;
+
+    fp = fopen("input.c", "r");
+
+    if (fp == NULL)
+    {
+        printf("File not found");
+        return 0;
+    }
+
+    while ((c = fgetc(fp)) != EOF)
+    {
+        if (c == '/')
+        {
+            d = fgetc(fp);
+
+            if (d == '/')
+            {
+                count++;
+                while ((c = fgetc(fp)) != EOF && c != '\n');
+            }
+            else if (d == '*')
+            {
+                count++;
+                while ((c = fgetc(fp)) != EOF)
+                {
+                    if (c == '*' && (d = fgetc(fp)) == '/')
+                        break;
+                }
+            }
+            else
+                ungetc(d, fp);
+        }
+    }
+
+    printf("Number of comments = %d", count);
+
+    fclose(fp);
+    return 0;
+}
