@@ -1,0 +1,22 @@
+#include <stdio.h>
+
+int main()
+{
+    char a[10], b[10], c[10], d[10];
+
+    printf("Enter first expression (a+b): ");
+    scanf("%s", a);
+
+    printf("Enter second expression (a+b): ");
+    scanf("%s", b);
+
+    printf("\nBefore optimization:\n");
+    printf("t1 = %s\n", a);
+    printf("t2 = %s\n", b);
+
+    printf("\nAfter optimization:\n");
+    printf("t1 = %s\n", a);
+    printf("t2 = t1\n");
+
+    return 0;
+}
