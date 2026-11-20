@@ -1,0 +1,22 @@
+#include <stdio.h>
+
+int main()
+{
+    int a, b, result;
+
+    printf("Enter two numbers: ");
+    scanf("%d%d", &a, &b);
+
+    result = a + b;
+
+    printf("\nAnnotated Parse Tree\n");
+    printf("       E [value=%d]\n", result);
+    printf("      / | \\\n");
+    printf("     E  +  T\n");
+    printf("     |     |\n");
+    printf("    %d    %d\n", a, b);
+
+    printf("\nResult = %d", result);
+
+    return 0;
+}
