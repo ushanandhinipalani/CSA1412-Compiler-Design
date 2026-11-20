@@ -1,0 +1,50 @@
+#include <stdio.h>
+
+char s[20];
+int i = 0;
+
+void E();
+void T();
+void E1();
+
+void E()
+{
+    T();
+    E1();
+}
+
+void E1()
+{
+    if (s[i] == '+')
+    {
+        i++;
+        T();
+        E1();
+    }
+}
+
+void T()
+{
+    if (s[i] == 'i' && s[i + 1] == 'd')
+        i += 2;
+    else
+    {
+        printf("Invalid String");
+        exit(0);
+    }
+}
+
+int main()
+{
+    printf("Enter expression: ");
+    scanf("%s", s);
+
+    E();
+
+    if (s[i] == '\0')
+        printf("Valid String");
+    else
+        printf("Invalid String");
+
+    return 0;
+}
