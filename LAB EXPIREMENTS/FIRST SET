@@ -1,0 +1,60 @@
+#include <stdio.h>
+#include <string.h>
+
+char p[10][10], first[10];
+int n, k = 0;
+
+void findFirst(char c)
+{
+    int i, j;
+    if (!isupper(c))
+    {
+        first[k++] = c;
+        return;
+    }
+
+    for (i = 0; i < n; i++)
+    {
+        if (p[i][0] == c)
+        {
+            if (p[i][2] == '#')
+                first[k++] = '#';
+            else
+                for (j = 2; p[i][j] != '\0'; j++)
+                {
+                    if (!isupper(p[i][j]))
+                    {
+                        first[k++] = p[i][j];
+                        break;
+                    }
+                    findFirst(p[i][j]);
+                    break;
+                }
+        }
+    }
+}
+
+int main()
+{
+    char c;
+    int i;
+
+    printf("Enter number of productions: ");
+    scanf("%d", &n);
+
+    printf("Enter productions (A=abc):\n");
+    for (i = 0; i < n; i++)
+        scanf("%s", p[i]);
+
+    printf("Enter non-terminal: ");
+    scanf(" %c", &c);
+
+    findFirst(c);
+
+    printf("FIRST(%c) = { ", c);
+    for (i = 0; i < k; i++)
+        printf("%c ", first[i]);
+    printf("}");
+
+    return 0;
+}
