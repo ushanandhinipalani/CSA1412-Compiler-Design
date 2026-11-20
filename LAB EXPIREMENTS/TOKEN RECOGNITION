@@ -1,0 +1,29 @@
+#include <stdio.h>
+#include <ctype.h>
+#include <string.h>
+
+int main()
+{
+    char s[50];
+    int i = 0;
+
+    printf("Enter a token: ");
+    scanf("%s", s);
+
+    if (isdigit(s[0]))
+        printf("Number");
+    else if (isalpha(s[0]) || s[0] == '_')
+    {
+        if (!strcmp(s, "int") || !strcmp(s, "float") ||
+            !strcmp(s, "char") || !strcmp(s, "if"))
+            printf("Keyword");
+        else
+            printf("Identifier");
+    }
+    else if (strchr("+-*/=", s[0]))
+        printf("Operator");
+    else
+        printf("Special Symbol");
+
+    return 0;
+}
