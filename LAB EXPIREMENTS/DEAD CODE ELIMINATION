@@ -1,0 +1,22 @@
+#include <stdio.h>
+
+int main()
+{
+    int a, b, c;
+
+    printf("Enter values of a and b: ");
+    scanf("%d%d", &a, &b);
+
+    c = a + b;
+
+    printf("Before optimization:\n");
+    printf("c = a + b\n");
+    printf("d = a * b\n");
+
+    printf("\nAfter optimization:\n");
+    printf("c = a + b\n");
+
+    printf("Result = %d", c);
+
+    return 0;
+}
