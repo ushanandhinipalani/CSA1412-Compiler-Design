@@ -1,0 +1,33 @@
+#include <stdio.h>
+#include <ctype.h>
+
+int main()
+{
+    char s[20];
+    int i;
+
+    printf("Enter postfix expression: ");
+    scanf("%s", s);
+
+    for (i = 0; s[i] != '\0'; i++)
+    {
+        if (isalnum(s[i]))
+            printf("PUSH %c\n", s[i]);
+        else
+        {
+            printf("POP R1\n");
+            printf("POP R2\n");
+
+            if (s[i] == '+') printf("ADD R2, R1\n");
+            if (s[i] == '-') printf("SUB R2, R1\n");
+            if (s[i] == '*') printf("MUL R2, R1\n");
+            if (s[i] == '/') printf("DIV R2, R1\n");
+
+            printf("PUSH R2\n");
+        }
+    }
+
+    printf("POP RESULT\n");
+
+    return 0;
+}
