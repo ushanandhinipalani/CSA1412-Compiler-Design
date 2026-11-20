@@ -1,0 +1,18 @@
+#include <stdio.h>
+
+int main()
+{
+    char a, op1, op2, op;
+    int i = 1;
+
+    printf("Enter expression (a+b): ");
+    scanf(" %c %c %c", &op1, &op, &op2);
+
+    printf("Enter result variable: ");
+    scanf(" %c", &a);
+
+    printf("t%d = %c %c %c\n", i, op1, op, op2);
+    printf("%c = t%d\n", a, i);
+
+    return 0;
+}
