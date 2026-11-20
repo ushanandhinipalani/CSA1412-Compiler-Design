@@ -1,0 +1,22 @@
+#include <stdio.h>
+
+int main()
+{
+    char nt, alpha[20], beta[20];
+
+    printf("Enter non-terminal: ");
+    scanf(" %c", &nt);
+
+    printf("Enter recursive part: ");
+    scanf("%s", alpha);
+
+    printf("Enter non-recursive part: ");
+    scanf("%s", beta);
+
+    printf("\nAfter removing left recursion:\n");
+
+    printf("%c -> %s%c'\n", nt, beta, nt);
+    printf("%c' -> %s%c' | #\n", nt, alpha, nt);
+
+    return 0;
+}
